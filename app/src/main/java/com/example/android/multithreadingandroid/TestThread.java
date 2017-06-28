@@ -3,6 +3,8 @@ package com.example.android.multithreadingandroid;
 import android.os.Looper;
 import android.widget.TextView;
 
+import org.greenrobot.eventbus.EventBus;
+
 /**
  * Created by Android on 6/28/2017.
  */
@@ -21,7 +23,6 @@ public class TestThread extends Thread {
     public void run() {
         super.run();
 
-
             for (int i = 0; i < 10 ; i++) {
                 try {
                     Thread.sleep(100);
@@ -29,6 +30,7 @@ public class TestThread extends Thread {
                     e.printStackTrace();
                 }
                 final String finaled = ""+i;
+                EventBus.getDefault().post(new HelloEvent("hello" + i));
 
                 handler.post(new Runnable() {
                     @Override
@@ -42,7 +44,7 @@ public class TestThread extends Thread {
                     public void run() {
                         text2.setText(finaled);
                     }
-                },100);
+                },2000);
 
                 System.out.println("Counter: " +i+ "Thread: "+ Thread.currentThread());
             }

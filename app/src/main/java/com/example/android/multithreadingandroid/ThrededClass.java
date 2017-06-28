@@ -3,6 +3,8 @@ package com.example.android.multithreadingandroid;
 import android.os.Looper;
 import android.widget.TextView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.logging.Handler;
 
 /**
@@ -30,9 +32,11 @@ public class ThrededClass implements Runnable {
                 e.printStackTrace();
             }
             final String finaled = "" + i;
+            EventBus.getDefault().post(new HelloEvent("hello" + i));
             handler.post(new Runnable() {
                 @Override
                 public void run() {
+
                     text.setText(finaled);
                 }
             });

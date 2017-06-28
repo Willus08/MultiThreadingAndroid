@@ -35,9 +35,19 @@
       android:text="Test Thread"
       android:layout_width="match_parent"
       android:layout_height="wrap_content" />
+
+
+
   <Button
       android:onClick="TestInSyncClass"
       android:text="Test InSyncClass"
       android:layout_width="match_parent"
       android:layout_height="wrap_content" />
+
+  <ProgressBar
+      style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+      android:id="@+id/pbProgress"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="gone"/>
 </LinearLayout>
